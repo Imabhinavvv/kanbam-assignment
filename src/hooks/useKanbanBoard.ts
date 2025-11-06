@@ -1,7 +1,14 @@
 import { useState, useCallback } from 'react';
 import { KanbanColumn, KanbanTask } from '../components/KanbanBoard/KanbanBoard.types';
 
-export const useKanbanBoard = (initialColumns: KanbanColumn[], initialTasks: Record<string, KanbanTask>) => {
+export const useKanbanBoard = (
+  initialColumns: KanbanColumn[],
+  initialTasks: Record<string, KanbanTask>,
+  onTaskMoveCallback?: (taskId: string, fromColumnId: string, toColumnId: string, newIndex: number) => void,
+  onTaskCreateCallback?: (columnId: string, task: KanbanTask) => void,
+  onTaskUpdateCallback?: (taskId: string, updates: Partial<KanbanTask>) => void,
+  onTaskDeleteCallback?: (taskId: string) => void
+) => {
   const [columns, setColumns] = useState(initialColumns);
   const [tasks, setTasks] = useState(initialTasks);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -38,8 +45,10 @@ export const useKanbanBoard = (initialColumns: KanbanColumn[], initialTasks: Rec
         ...prevTasks[taskId],
         status: toColumnId,
       },
-    }));
-  }, [columns]);
+    if (onTaskMoveCallback) {
+      onTaskMoveCallback(taskId, fromColumnId, toColumnId, newIndex);
+    }
+  }, [columns, onTaskMoveCallback]);
 
   const onTaskCreate = useCallback((columnId: string, task: KanbanTask) => {
     setTasks(prevTasks => ({
