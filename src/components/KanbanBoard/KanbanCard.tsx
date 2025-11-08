@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useDraggable } from '@dnd-kit/core';
+<<<<<<< HEAD
 import type { KanbanTask } from './KanbanBoard.types';
+=======
+import { KanbanTask } from './KanbanBoard.types';
+>>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
 
 interface KanbanCardProps {
   task: KanbanTask;
@@ -57,6 +61,7 @@ export const KanbanCard: React.FC<KanbanCardProps> = ({ task, index, columnId, i
         <h4 className="font-medium text-sm text-neutral-900 line-clamp-2">
           {task.title}
         </h4>
+<<<<<<< HEAD
         <div className="flex items-center">
           {isHovered && (
             <div className="flex items-center">
@@ -81,6 +86,9 @@ export const KanbanCard: React.FC<KanbanCardProps> = ({ task, index, columnId, i
           )}
           <input type="checkbox" checked={isSelected} onChange={onSelect} className="ml-2" />
         </div>
+=======
+        <input type="checkbox" checked={isSelected} onChange={onSelect} className="ml-2" />
+>>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
       </div>
       {task.description && (
         <p className="text-xs text-neutral-600 mb-2 line-clamp-2">

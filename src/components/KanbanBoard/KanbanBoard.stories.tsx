@@ -1,13 +1,24 @@
+<<<<<<< HEAD
 import type { Meta, StoryFn } from '@storybook/react';
 import { KanbanBoard } from './KanbanBoard';
 import type { KanbanViewProps, KanbanTask } from './KanbanBoard.types';
+=======
+import React from 'react';
+import { Story, Meta } from '@storybook/react';
+import { KanbanBoard } from './KanbanBoard';
+import { KanbanViewProps } from './KanbanBoard.types';
+>>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
 
 export default {
   title: 'Kanban/KanbanBoard',
   component: KanbanBoard,
 } as Meta;
 
+<<<<<<< HEAD
 const Template: StoryFn<KanbanViewProps> = (args) => <KanbanBoard {...args} />;
+=======
+const Template: Story<KanbanViewProps> = (args) => <KanbanBoard {...args} />;
+>>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
 
 const sampleColumns = [
   { id: 'todo', title: 'To Do', color: '#6b7280', taskIds: ['task-1', 'task-2'], maxTasks: 10 },
@@ -16,7 +27,11 @@ const sampleColumns = [
   { id: 'done', title: 'Done', color: '#10b981', taskIds: ['task-4', 'task-5'] },
 ];
 
+<<<<<<< HEAD
 const sampleTasks: Record<string, KanbanTask> = {
+=======
+const sampleTasks = {
+>>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
   'task-1': {
     id: 'task-1',
     title: 'Implement drag and drop',
@@ -73,9 +88,15 @@ const sampleTasks: Record<string, KanbanTask> = {
 export const Default = Template.bind({});
 Default.args = {
   columns: sampleColumns,
+<<<<<<< HEAD
   tasks: sampleTasks,
   onTaskMove: () => {},
   onTaskCreate: () => {},
+=======
+  onTaskCreate: (columnId, task) => {
+    console.log(`New task created in column ${columnId}:`, task);
+  },
+>>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
   onTaskUpdate: () => {},
   onTaskDelete: () => {},
 };
