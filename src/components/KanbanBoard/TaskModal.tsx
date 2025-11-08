@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-<<<<<<< HEAD
 import type { KanbanTask } from './KanbanBoard.types';
-=======
-import { KanbanTask } from './KanbanBoard.types';
->>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
 
 interface TaskModalProps {
   task?: KanbanTask;
@@ -36,10 +32,7 @@ export const TaskModal: React.FC<TaskModalProps> = ({ task, onClose, onTaskCreat
         title,
         description,
         priority,
-<<<<<<< HEAD
         status: '', // This will be set in the useKanbanBoard hook
-=======
->>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
         createdAt: new Date(),
       });
     }

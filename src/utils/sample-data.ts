@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import type { KanbanColumn, KanbanTask } from '../components/KanbanBoard/KanbanBoard.types';
-=======
-import { KanbanColumn, KanbanTask } from '../components/KanbanBoard/KanbanBoard.types';
->>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
 
 export const sampleColumns: KanbanColumn[] = [
   {

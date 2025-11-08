@@ -1,10 +1,5 @@
 import { useState, useCallback } from 'react';
-<<<<<<< HEAD
 import type { KanbanColumn, KanbanTask } from '../components/KanbanBoard/KanbanBoard.types';
-
-export const useKanbanBoard = (initialColumns: KanbanColumn[], initialTasks: Record<string, KanbanTask>) => {
-=======
-import { KanbanColumn, KanbanTask } from '../components/KanbanBoard/KanbanBoard.types';
 
 export const useKanbanBoard = (
   initialColumns: KanbanColumn[],
@@ -14,7 +9,6 @@ export const useKanbanBoard = (
   onTaskUpdateCallback?: (taskId: string, updates: Partial<KanbanTask>) => void,
   onTaskDeleteCallback?: (taskId: string) => void
 ) => {
->>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
   const [columns, setColumns] = useState(initialColumns);
   const [tasks, setTasks] = useState(initialTasks);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -51,15 +45,11 @@ export const useKanbanBoard = (
         ...prevTasks[taskId],
         status: toColumnId,
       },
-<<<<<<< HEAD
     }));
-  }, [columns]);
-=======
     if (onTaskMoveCallback) {
       onTaskMoveCallback(taskId, fromColumnId, toColumnId, newIndex);
     }
   }, [columns, onTaskMoveCallback]);
->>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
 
   const onTaskCreate = useCallback((columnId: string, task: KanbanTask) => {
     setTasks(prevTasks => ({
@@ -73,7 +63,10 @@ export const useKanbanBoard = (
       return c;
     }));
     setIsAddModalOpen(false);
-  }, [columns]);
+    if (onTaskCreateCallback) {
+      onTaskCreateCallback(columnId, task);
+    }
+  }, [columns, onTaskCreateCallback]);
 
   const onTaskUpdate = useCallback((taskId: string, updates: Partial<KanbanTask>) => {
     setTasks(prevTasks => ({
@@ -83,7 +76,10 @@ export const useKanbanBoard = (
         ...updates,
       },
     }));
-  }, []);
+    if (onTaskUpdateCallback) {
+      onTaskUpdateCallback(taskId, updates);
+    }
+  }, [onTaskUpdateCallback]);
 
   const onTaskDelete = useCallback((taskId: string) => {
     const newTasks = { ...tasks };
@@ -94,7 +90,10 @@ export const useKanbanBoard = (
       ...c,
       taskIds: c.taskIds.filter(id => id !== taskId),
     })));
-  }, [columns, tasks]);
+    if (onTaskDeleteCallback) {
+      onTaskDeleteCallback(taskId);
+    }
+  }, [columns, tasks, onTaskDeleteCallback]);
 
   const openAddModal = (columnId: string) => {
     setAddModalColumnId(columnId);

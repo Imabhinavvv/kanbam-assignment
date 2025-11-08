@@ -1,25 +1,15 @@
 import './App.css';
 import { KanbanBoard } from './components/KanbanBoard/KanbanBoard';
-<<<<<<< HEAD
 import type { KanbanViewProps, KanbanTask, KanbanColumn } from './components/KanbanBoard/KanbanBoard.types';
 
 const sampleColumns: KanbanColumn[] = [
-=======
-import { KanbanViewProps } from './components/KanbanBoard/KanbanBoard.types';
-
-const sampleColumns = [
->>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
   { id: 'todo', title: 'To Do', color: '#6b7280', taskIds: ['task-1', 'task-2'], maxTasks: 10 },
   { id: 'in-progress', title: 'In Progress', color: '#3b82f6', taskIds: ['task-3'], maxTasks: 5 },
   { id: 'review', title: 'Review', color: '#f59e0b', taskIds: [], maxTasks: 3 },
   { id: 'done', title: 'Done', color: '#10b981', taskIds: ['task-4', 'task-5'] },
 ];
 
-<<<<<<< HEAD
 const sampleTasks: Record<string, KanbanTask> = {
-=======
-const sampleTasks = {
->>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
   'task-1': {
     id: 'task-1',
     title: 'Implement drag and drop',

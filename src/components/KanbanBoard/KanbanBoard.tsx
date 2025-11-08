@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
 import { DndContext, type DragEndEvent } from '@dnd-kit/core';
 import type { KanbanViewProps } from './KanbanBoard.types';
-=======
-import { DndContext, DragEndEvent } from '@dnd-kit/core';
-import { KanbanViewProps } from './KanbanBoard.types';
->>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
 import { KanbanColumn } from './KanbanColumn';
 import { useKanbanBoard } from '../../hooks/useKanbanBoard';
 import { TaskModal } from './TaskModal';
@@ -40,11 +35,7 @@ export const KanbanBoard: React.FC<KanbanViewProps> = (props) => {
       const taskId = active.id as string;
       const newIndex = over.data.current?.index;
 
-<<<<<<< HEAD
       if (fromColumnId && toColumnId && taskId && newIndex !== undefined) {
-=======
-      if (fromColumnId && toColumnId && taskId && newIndex !== undefined && active.data.current && over.data.current) {
->>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
         onTaskMove(taskId, fromColumnId, toColumnId, newIndex);
       }
     }

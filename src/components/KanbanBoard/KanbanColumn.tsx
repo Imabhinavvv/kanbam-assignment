@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { useDroppable } from '@dnd-kit/core';
-<<<<<<< HEAD
 import type { KanbanColumn as KanbanColumnType, KanbanTask } from './KanbanBoard.types';
-=======
-import { KanbanColumn as KanbanColumnType, KanbanTask } from './KanbanBoard.types';
->>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
 import { KanbanCard } from './KanbanCard';
 
 interface KanbanColumnProps {
@@ -26,7 +22,7 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({ column, tasks, selec
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  const isWipLimitReached = column.maxTasks && tasks.length >= column.maxTasks;
+  const isWipLimitReached = !!(column.maxTasks && tasks.length >= column.maxTasks);
   const isApproachingWipLimit = column.maxTasks && tasks.length / column.maxTasks >= 0.8;
 
   const columnBgColor = isWipLimitReached
@@ -82,11 +78,7 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({ column, tasks, selec
             ))}
           </div>
           <div className="p-2">
-<<<<<<< HEAD
-            <button onClick={onAddTask} className="w-full px-4 py-2 bg-primary-500 text-white rounded-lg">+ Add Task</button>
-=======
             <button onClick={onAddTask} disabled={isWipLimitReached} className="w-full px-4 py-2 bg-primary-500 text-white rounded-lg disabled:bg-gray-400">+ Add Task</button>
->>>>>>> 6dbdbf9e90a85460432ce4b5f325bf8e3970535c
           </div>
         </>
       )}
